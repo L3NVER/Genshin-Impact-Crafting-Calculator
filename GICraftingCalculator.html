@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<title>GICC</title>
+		<meta charset="utf-8" />
+		<script>
+			window.onload = startup;
+
+			function startup() {
+				btnCalc.onclick = Calculate;
+			}
+			
+			function Calculate() {
+                var legv = parseFloat(inLeg.value);
+                var epiv = parseFloat(inEpi.value);
+                var rarv = parseFloat(inRar.value);
+                var uncv = parseFloat(inUnc.value);
+				var comv = parseFloat(inCom.value);
+
+                outCom.innerHTML = "Common materials: " + comv;
+                var unct = Math.floor((comv / 3) + uncv);
+                outUnc.innerHTML = "Uncommon materials: " + unct;
+                
+                var rart = Math.floor((unct / 3) + rarv);
+                outRar.innerHTML = "Rare materials: " + rart;
+
+                var epit = Math.floor((rart / 3) + epiv);
+                outEpi.innerHTML = "Epic materials: " + epit;
+
+				var legt = Math.floor((epit / 3) + legv);
+				outLeg.innerHTML = "Legendary materials: " + legt;
+			}
+		</script>
+		<style>
+			#header {
+				position: absolute;
+				top: 30px;
+				left: 50%;
+				height: 240px;
+				width: 586px;
+                margin:  0 0 0 -300px;
+				background-color: rgb(255,197,0);
+                padding: 10px;
+                font-size: 17px;
+			}
+
+			.parent {
+				position: relative;
+				height: 460px;
+				width: 600px;
+                left: 50%;
+                top: 300px;
+                margin:  0 0 0 -300px;
+				background-color: rgb(41,51,85);
+                border-color: rgb(3,144,194);
+                border-style: inset;
+			}
+
+			.child1 {
+				position: absolute;
+				width: 250px;
+				height: 400px;
+				top: 20px;
+				left: 25%;
+				margin: 0 0 0 -125px;
+                text-align: center;
+			}
+
+            .child2 {
+				position: absolute;
+				width: 250px;
+				height: 400px;
+				top: 20px;
+				left: 75%;
+				margin: 0 0 0 -125px;
+                color: white;
+                text-align: center;
+			}
+
+            .footer {
+                position: absolute;
+                width: 606px;
+                height: 50px;
+                left: 50%;
+                top: 800px;
+                margin: 0 0 0 -300px;
+                background-color: rgb(255,197,0);
+                color: black;
+                text-align: center;
+            }
+
+            input {
+                border-width: 4px;
+            }
+			
+		</style>
+	</head>
+	<body style="background-color: rgb(22,22,31)">
+		<div id="header">
+			<h1>Genshin Impact Crafting Calculator</h1>
+			<p id="txtTopp">Calculates how much of one material you could make in Genshin Impact. Fill in the empty slots with
+			how many you have of an item. For example, if you wanted to see how many Shivada Jade Chunks you could make with what you have,
+			you would fill in how many you currently have of each rarity and then you would see how many you could get if you crafted all
+			of your Shivada Jade gems of all rarities into into Shivada Jade Chunks.</p>
+		</div>
+        <div class="parent">
+		<div class="child1">
+            <p style="color:white">Amount of legendary materials</p>
+			<input id="inLeg" type="number" placeholder="Amount" style="border-color: rgb(255,200,100)">
+            <p style="color:white">Amount of epic materials</p>
+			<input id="inEpi" type="number" placeholder="Amount" style="border-color: rgb(200,126,200)">
+            <p style="color:white">Amount of rare materials</p>
+			<input id="inRar" type="number" placeholder="Amount" style="border-color: rgb(121,169,255)">
+            <p style="color:white">Amount of uncommon materials</p>
+			<input id="inUnc" type="number" placeholder="Amount" style="border-color: rgb(100,200,100)">
+			<p style="color: white">Amount common materials</p>
+			<input id="inCom" type="number" placeholder="Amount" style="border-color: rgb(150, 150, 150)">
+            <br><br>
+			<button id="btnCalc">Calculate</button>
+		</div>
+
+        <div class="child2">
+            <p id="outLeg">Legendary materials: </p><br>
+            <p id="outEpi">Epic materials: </p><br>
+            <p id="outRar">Rare materials: </p><br>
+            <p id="outUnc">Uncommon materials: </p><br>
+			<p id="outCom">Common materials: </p>
+        </div>
+        </div>
+
+        <div class="footer">
+            <p><a href="https://github.com/L3NVER" target="_blank">Check out my github!</a></p>
+        </div>
+	</body>
+</html>
